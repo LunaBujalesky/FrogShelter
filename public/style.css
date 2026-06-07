@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #f5f1e8;
+}
+
+h1 {
+  text-align: center;
+}
+
+#frog-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.frog-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 180px;
+  background: white;
+}
