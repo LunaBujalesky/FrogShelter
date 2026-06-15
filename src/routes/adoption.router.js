@@ -50,7 +50,11 @@ router.post("/:id/evolve", (req, res) => {
   }
 
   const currentIndex = STAGES.indexOf(frog.stage);
-
+  if (!frog.adopted) {
+    return res.status(400).json({
+      error: "You must adopt the frog first"
+    });
+  }
   if (currentIndex === STAGES.length - 1) {
     return res.status(400).json({ error: "Frog is already fully evolved" });
   }

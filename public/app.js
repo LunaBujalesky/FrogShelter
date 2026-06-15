@@ -1,25 +1,50 @@
-fetch("/api/adoptions")
-  .then(response => response.json())
-  .then(frogs => {
+async function loadFrogs() {
 
-    const container = document.getElementById("frog-container");
+  const response = await fetch("/api/adoptions");
+  const frogs = await response.json();
 
-    container.innerHTML = "";
+  const container = document.getElementById("frog-container");
 
-    frogs.forEach(frog => {
+  container.innerHTML = "";
 
-      container.innerHTML += `
-        <div class="frog-card">
-          <h2>${frog.name}</h2>
-          <p>${frog.species}</p>
-          <p>Estado: ${frog.stage}</p>
-          <p>${frog.adopted ? "🏡 Adoptada" : "🥚 Disponible"}</p>
-        </div>
-      `;
+  frogs.forEach(frog => {
 
-    });
+    container.innerHTML += `
+      <div class="frog-card">
+        <h2>${frog.name}</h2>
+        <p>${frog.species}</p>
+        <p>Estado: ${frog.stage}</p>
+        <p>${frog.adopted ? "🏡 Adoptada" : "🥚 Disponible"}</p>
 
-  })
-  .catch(error => {
-    console.error(error);
+        <button onclick="adoptFrog(${frog.id})">
+          Adoptar
+        </button>
+
+        <button onclick="evolveFrog(${frog.id})">
+          Evolucionar
+        </button>
+
+      </div>
+    `;
   });
+}
+
+async function adoptFrog(id) {
+
+  await fetch(`/api/adoptions/${id}`, {
+    method: "POST"
+  });
+
+  loadFrogs();
+}
+
+async function evolveFrog(id) {
+
+  await fetch(`/api/adoptions/${id}/evolve`, {
+    method: "POST"
+  });
+
+  loadFrogs();
+}
+
+loadFrogs();

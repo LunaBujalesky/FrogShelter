@@ -23,3 +23,8 @@ h1 {
   width: 180px;
   background: white;
 }
+button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
