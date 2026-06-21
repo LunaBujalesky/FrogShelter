@@ -20,7 +20,11 @@ https://hub.docker.com/repository/docker/lunabujalesky/frogshelter/general
 https://hub.docker.com/r/lunabujalesky/frogshelter
 ---
 
+##Documentación
+https://docs.google.com/document/d/1Ld2T94QXQEavdfgb51rJzToCWHGSNodehK97ywUOveA/edit?usp=sharing
+
 ## Instalación local
 
 ```bash
 npm install
+
